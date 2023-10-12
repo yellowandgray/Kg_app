@@ -1,100 +1,177 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_tts/flutter_tts.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_tts/flutter_tts.dart';
 
-void main() => runApp(MyAudio());
+// void main() => runApp(MyAudio());
 
-class MyAudio extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MyDialog(),
-    );
-  }
-}
+// class MyAudio extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: MyDialog(),
+//     );
+//   }
+// }
 
-class MyDialog extends StatefulWidget {
-  @override
-  _MyDialogState createState() => _MyDialogState();
-}
+// class MyDialog extends StatefulWidget {
+//   @override
+//   _MyDialogState createState() => _MyDialogState();
+// }
 
-class _MyDialogState extends State<MyDialog> {
-  final FlutterTts flutterTts = FlutterTts();
-  bool isPlaying = false;
+// class _MyDialogState extends State<MyDialog> {
+//   final FlutterTts flutterTts = FlutterTts();
+//   bool isPlaying = false;
 
-  Future<void> _speak(String text) async {
-    try {
-      await flutterTts.setLanguage("en-IN");
-      await flutterTts.setVoice({
-        "name": "female_voice_name_here"
-      }); // Replace "female_voice_name_here" with the correct voice name
-      if (isPlaying) {
-        await flutterTts.stop();
-        setState(() {
-          isPlaying = false;
-        });
-      } else {
-        await flutterTts.speak(text);
-        setState(() {
-          isPlaying = true;
-        });
-      }
-    } catch (e) {
-      print("Error: $e");
-    }
-  }
+//   Future<void> _speak(String text) async {
+//     try {
+//       await flutterTts.setLanguage("en-IN");
+//       await flutterTts.setVoice({
+//         "name": "female_voice_name_here"
+//       }); // Replace "female_voice_name_here" with the correct voice name
+//       if (isPlaying) {
+//         await flutterTts.stop();
+//         setState(() {
+//           isPlaying = false;
+//         });
+//       } else {
+//         await flutterTts.speak(text);
+//         setState(() {
+//           isPlaying = true;
+//         });
+//       }
+//     } catch (e) {
+//       print("Error: $e");
+//     }
+//   }
 
-  @override
-  Widget build(BuildContext context) {
-    String textToSpeak =
-        '''They're rich in fiber and antioxidants. Eating them is linked to a lower chance of getting many chronic conditions, including diabetes, heart disease, and cancer. Apples may also promote weight loss and improve gut and brain health.''';
+//   @override
+//   Widget build(BuildContext context) {
+//     String textToSpeak =
+//         '''They're rich in fiber and antioxidants. Eating them is linked to a lower chance of getting many chronic conditions, including diabetes, heart disease, and cancer. Apples may also promote weight loss and improve gut and brain health.''';
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Text-to-Speech App'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              textToSpeak,
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 16),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                // Handle the action for the Listen button
-                _speak(textToSpeak);
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 236, 24, 155),
-              ),
-              child: Padding(
-                padding: EdgeInsets.all(10.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(
-                      isPlaying
-                          ? Icons.pause_circle_outline
-                          : Icons.play_circle_outline,
-                      color: Colors.white,
-                    ),
-                    SizedBox(width: 8.0),
-                    Text('Listen', style: TextStyle(color: Colors.white)),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text('Text-to-Speech App'),
+//       ),
+//       body: Center(
+//         child: Column(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: [
+//             Text(
+//               textToSpeak,
+//               textAlign: TextAlign.center,
+//               style: TextStyle(fontSize: 16),
+//             ),
+//             const SizedBox(height: 20),
+//             ElevatedButton(
+//               onPressed: () {
+//                 // Handle the action for the Listen button
+//                 _speak(textToSpeak);
+//               },
+//               style: ElevatedButton.styleFrom(
+//                 backgroundColor: const Color.fromARGB(255, 236, 24, 155),
+//               ),
+//               child: Padding(
+//                 padding: EdgeInsets.all(10.0),
+//                 child: Row(
+//                   mainAxisSize: MainAxisSize.min,
+//                   children: [
+//                     Icon(
+//                       isPlaying
+//                           ? Icons.pause_circle_outline
+//                           : Icons.play_circle_outline,
+//                       color: Colors.white,
+//                     ),
+//                     SizedBox(width: 8.0),
+//                     Text('Listen', style: TextStyle(color: Colors.white)),
+//                   ],
+//                 ),
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 
+
+// import 'dart:typed_data';
+
+// import 'package:http/http.dart' as http;
+// import 'dart:convert';
+
+// import 'package:path_provider/path_provider.dart';
+// import 'dart:io';
+// import 'package:audioplayers/audioplayers.dart';
+
+// var _apikey = "AIzaSyDWx34PZW0hjSpwExBo5bwrENvyRkLisBE";
+// AudioPlayer audioPlayer = AudioPlayer();
+
+// const String femalevoice = "cmn-CN-Standard-A";
+// const String malevoice = "cmn-CN-Standard-B";
+
+// Future<http.Response> texttospeech(String text, String voicetype) {
+//   String url =
+//       "https://texttospeech.googleapis.com/v1beta1/text:synthesize?key=$_apikey";
+
+//   var body = json.encode({
+//     "audioConfig": {"audioEncoding": "LINEAR16", "pitch": 0, "speakingRate": 1},
+//     "input": {"text": text},
+//     "voice": {"languageCode": "cmn-CN", "name": voicetype}
+//   });
+
+//   var response =
+//       http.post(AudioSource.uri(Uri.parse(url)) headers: {"Content-type": "application/json"}, body: body);
+
+//   return response;
+// }
+
+// // Play male voice
+// playmalevoice(String text) async {
+//   var response = await texttospeech(text, malevoice);
+//   var jsonData = jsonDecode(response.body);
+
+//   String audioBase64 = jsonData['audioContent'];
+
+//   Uint8List bytes = base64Decode(audioBase64);
+
+//   String dir = (await getApplicationDocumentsDirectory()).path;
+//   File file =
+//       File("$dir/" + DateTime.now().millisecondsSinceEpoch.toString() + ".mp3");
+
+//   await file.writeAsBytes(bytes);
+
+//   int result = await audioPlayer.play(file.path as Source);
+//   audioPlayer.setPlaybackRate(playbackRate: 0.7);
+//   audioPlayer.setVolume(1);
+//   if (result == 1) {
+//     // success
+//   }
+// }
+
+// // play female voice
+// playfemalevoice(String text) async {
+//   var response = await texttospeech(text, femalevoice);
+//   var jsonData = jsonDecode(response.body);
+
+//   String audioBase64 = jsonData['audioContent'];
+
+//   Uint8List bytes = base64Decode(audioBase64);
+
+//   String dir = (await getApplicationDocumentsDirectory()).path;
+//   File file =
+//       File("$dir/" + DateTime.now().millisecondsSinceEpoch.toString() + ".mp3");
+
+//   await file.writeAsBytes(bytes);
+
+//   int result = await audioPlayer.play(file.path);
+//   audioPlayer.setPlaybackRate(playbackRate: 0.7);
+//   audioPlayer.setVolume(1);
+//   if (result == 1) {
+//     // success
+//   }
+// }
 // ignore_for_file: sort_child_properties_last, duplicate_ignore
 
 

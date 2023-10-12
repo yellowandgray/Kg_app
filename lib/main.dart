@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:io';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:kg_app/learn.dart';
@@ -29,33 +32,98 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
+  bool _autoSelectHome = false; // Flag to track whether to auto-select "Home"
 
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index;
-      // Check if the "Home" tab is clicked
-      if (_selectedIndex == 0) {
-        // Navigate to the TestPage
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const MyApp()),
-        );
-      } else if (_selectedIndex == 1) {
-        // Navigate to the TestPage
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const ListPage()),
-        );
-      } else if (_selectedIndex == 2) {
-        // Navigate to the TestPage
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const Testpage()),
-        );
+      if (_selectedIndex == index) {
+        // If the tapped item is already selected, toggle the flag.
+        _autoSelectHome = !_autoSelectHome;
+      } else {
+        // Otherwise, set the selected index.
+        _selectedIndex = index;
+        _autoSelectHome = false; // Reset the flag.
       }
-      ;
+
+      if (_selectedIndex == 0) {
+        Timer(const Duration(milliseconds: 200), () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const MyApp()),
+          ).then((_) {
+            // When returning from the "Games" screen, automatically select "Home" if needed.
+            if (_autoSelectHome) {
+              setState(() {
+                _selectedIndex = 0;
+                _autoSelectHome = false;
+              });
+            }
+          });
+        });
+      }
+
+      if (_selectedIndex == 2) {
+        Timer(const Duration(milliseconds: 200), () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const Testpage()),
+          ).then((_) {
+            // When returning from the "Event" screen, automatically select "Home" if needed.
+            if (_autoSelectHome) {
+              setState(() {
+                _selectedIndex = 0;
+                _autoSelectHome = false;
+              });
+            }
+          });
+        });
+      }
+
+      if (_selectedIndex == 1) {
+        Timer(const Duration(milliseconds: 200), () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const ListPage()),
+          ).then((_) {
+            // When returning from the "Search" screen, automatically select "Home" if needed.
+            if (_autoSelectHome) {
+              setState(() {
+                _selectedIndex = 0;
+                _autoSelectHome = false;
+              });
+            }
+          });
+        });
+      }
     });
   }
+
+  // void _onItemTapped(int index) {
+  //   setState(() {
+  //     _selectedIndex = index;
+  //     // Check if the "Home" tab is clicked
+  //     if (_selectedIndex == 0) {
+  //       // Navigate to the TestPage
+  //       Navigator.push(
+  //         context,
+  //         MaterialPageRoute(builder: (context) => const MyApp()),
+  //       );
+  //     } else if (_selectedIndex == 1) {
+  //       // Navigate to the TestPage
+  //       Navigator.push(
+  //         context,
+  //         MaterialPageRoute(builder: (context) => const ListPage()),
+  //       );
+  //     } else if (_selectedIndex == 2) {
+  //       // Navigate to the TestPage
+  //       Navigator.push(
+  //         context,
+  //         MaterialPageRoute(builder: (context) => const Testpage()),
+  //       );
+  //     }
+  //     ;
+  //   });
+  // }
 
   // Define the pages for each tab
   // ignore: unused_field
@@ -195,17 +263,19 @@ class _HomePageState extends State<HomePage> {
                   ),
                   ListTile(
                     leading: const Icon(Icons
-                        .book_online_rounded), // Replace Icons.directions_car with the desired icon
+                        .lightbulb), // Replace Icons.directions_car with the desired icon
                     title: const Text('Learn'),
                     titleTextStyle:
                         const TextStyle(fontSize: 16, color: Colors.black),
                     onTap: () {
+                      Navigator.pop(context);
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const ListPage()),
+                          builder: (context) => const ListPage(),
+                        ),
                       );
-                      // Add the functionality you want when this end drawer item is tapped.
+                      // Close the drawer after navigating
                     },
                   ),
                   ListTile(
@@ -215,6 +285,7 @@ class _HomePageState extends State<HomePage> {
                     titleTextStyle:
                         const TextStyle(fontSize: 16, color: Colors.black),
                     onTap: () {
+                      Navigator.pop(context);
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -231,6 +302,7 @@ class _HomePageState extends State<HomePage> {
                     titleTextStyle:
                         const TextStyle(fontSize: 16, color: Colors.black),
                     onTap: () {
+                      Navigator.pop(context);
                       // Navigator.push(
                       //   context,
                       //   MaterialPageRoute(
@@ -247,6 +319,7 @@ class _HomePageState extends State<HomePage> {
                     titleTextStyle:
                         const TextStyle(fontSize: 16, color: Colors.black),
                     onTap: () {
+                      Navigator.pop(context);
                       // Navigator.push(
                       //   context,
                       //   MaterialPageRoute(
@@ -263,6 +336,7 @@ class _HomePageState extends State<HomePage> {
                     titleTextStyle:
                         const TextStyle(fontSize: 16, color: Colors.black),
                     onTap: () {
+                      Navigator.pop(context);
                       // Navigator.push(
                       //   context,
                       //   MaterialPageRoute(
@@ -279,13 +353,8 @@ class _HomePageState extends State<HomePage> {
                     titleTextStyle:
                         const TextStyle(fontSize: 16, color: Colors.black),
                     onTap: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => const MapPage(),
-                      //   ),
-                      // );
-                      // Add the functionality you want when this ListTile is tapped.
+                      Navigator.pop(context);
+                      exit(0);
                     },
                   ),
                 ],
@@ -367,7 +436,7 @@ class _HomePageState extends State<HomePage> {
                       width: double.infinity,
                       height: 80.0,
                       child: Container(
-                        padding: EdgeInsets.all(10.0),
+                        padding: const EdgeInsets.all(10.0),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10.0),
                         ),
@@ -425,7 +494,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 TableCell(
                                   child: Container(
-                                    padding: EdgeInsets.all(10.0),
+                                    padding: const EdgeInsets.all(10.0),
                                     child: const Text(
                                       'Average',
                                       style: TextStyle(
@@ -469,7 +538,7 @@ class _HomePageState extends State<HomePage> {
                                 TableCell(
                                   child: Container(
                                     padding: const EdgeInsets.all(10.0),
-                                    child: Text('80.5 %'),
+                                    child: const Text('80.5 %'),
                                   ),
                                 ),
                               ],
@@ -489,7 +558,10 @@ class _HomePageState extends State<HomePage> {
               ),
               Padding(
                 padding: const EdgeInsets.only(
-                    left: 0.0, right: 0, top: 0), // Add margin to the container
+                    left: 0.0,
+                    right: 0,
+                    top: 0,
+                    bottom: 50), // Add margin to the container
                 child: Container(
                   width: double.infinity,
                   height: 300.0,
@@ -613,6 +685,49 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
+
+      // bottomNavigationBar: BottomAppBar(
+      //   // preferredSize: const Size.fromHeight(5.0),
+      //   // child: Theme(
+      //   //   data: Theme.of(context).copyWith(
+      //   //       // sets the background color of the `BottomNavigationBar`
+      //   //       canvasColor: Colors.white,
+      //   //       // sets the active color of the `BottomNavigationBar` if `Brightness` is light
+      //   //       primaryColor: Colors.white,
+      //   //       textTheme: Theme.of(context).textTheme.copyWith(
+      //   //           bodySmall: const TextStyle(
+      //   //               color: Colors
+      //   //                   .white))), // sets the inactive color of the `BottomNavigationBar`
+      //   child: BottomNavigationBar(
+      //     showSelectedLabels: true,
+      //     showUnselectedLabels: true,
+      //     type: BottomNavigationBarType.fixed, // Set the type to fixed
+      //     // key: bottomNavigationKey,
+      //     currentIndex: _selectedIndex,
+      //     items: const [
+      //       BottomNavigationBarItem(
+      //         icon: Icon(Icons.home),
+      //         label: 'Home',
+      //       ),
+      //       BottomNavigationBarItem(
+      //         icon: Icon(Icons.lightbulb),
+      //         label: 'Learn',
+      //       ),
+      //       BottomNavigationBarItem(
+      //         icon: Icon(Icons.text_snippet),
+      //         label: 'Test',
+      //         // Set the font size here
+      //       ),
+      //     ],
+      //     selectedItemColor: const Color.fromARGB(
+      //         255, 48, 134, 1), // Set the selected icon color to blue
+      //     unselectedItemColor:
+      //         Colors.grey, // Set the unselected icon color to white
+      //     // selectedItemColor: txt1color,
+      //     onTap: _onItemTapped,
+      //   ),
+      // ),
+
       bottomNavigationBar: BottomAppBar(
         color: Colors.blue,
         shape: const CircularNotchedRectangle(),
@@ -623,7 +738,7 @@ class _HomePageState extends State<HomePage> {
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.book_online_rounded),
+              icon: Icon(Icons.lightbulb),
               label: 'Learn',
             ),
             BottomNavigationBarItem(
@@ -633,7 +748,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
           currentIndex: _selectedIndex,
-          selectedItemColor: const Color(0xFF026279),
+          selectedItemColor: const Color.fromARGB(255, 48, 134, 1),
           unselectedItemColor: Colors.grey,
           onTap: _onItemTapped,
           selectedLabelStyle:

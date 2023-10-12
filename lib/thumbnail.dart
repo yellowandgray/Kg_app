@@ -134,7 +134,7 @@ class ThumbnailPages extends State<ThumbnailPage> {
                                                     .withOpacity(0.5),
                                                 spreadRadius: 2,
                                                 blurRadius: 7,
-                                                offset: Offset(0,
+                                                offset: const Offset(0,
                                                     3), // changes position of shadow
                                               ),
                                             ],
@@ -154,7 +154,7 @@ class ThumbnailPages extends State<ThumbnailPage> {
                                             fontSize: 18,
                                           ),
                                         ),
-                                        SizedBox(height: 8),
+                                        const SizedBox(height: 8),
                                         const Text(
                                           'They\'re rich in fiber and antioxidants. Eating them is linked to a lower chance of getting many chronic conditions, including diabetes, heart disease, and cancer. Apples may also promote weight loss and improve gut and brain health.',
                                           style: TextStyle(
@@ -162,7 +162,7 @@ class ThumbnailPages extends State<ThumbnailPage> {
                                           ),
                                           textAlign: TextAlign.justify,
                                         ),
-                                        SizedBox(height: 16),
+                                        const SizedBox(height: 16),
                                         Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceAround,
@@ -179,7 +179,8 @@ class ThumbnailPages extends State<ThumbnailPage> {
                                                         255, 236, 24, 155),
                                               ),
                                               child: Padding(
-                                                padding: EdgeInsets.all(5.0),
+                                                padding:
+                                                    const EdgeInsets.all(5.0),
                                                 child: Row(
                                                   mainAxisSize:
                                                       MainAxisSize.min,
@@ -318,7 +319,7 @@ class ThumbnailPages extends State<ThumbnailPage> {
                                         ),
                                       ),
                                     ),
-                                    SizedBox(height: 10),
+                                    const SizedBox(height: 10),
                                     Container(
                                       width: 300,
                                       height: 200,
@@ -333,7 +334,7 @@ class ThumbnailPages extends State<ThumbnailPage> {
                                             color: Colors.grey.withOpacity(0.5),
                                             spreadRadius: 2,
                                             blurRadius: 7,
-                                            offset: Offset(0,
+                                            offset: const Offset(0,
                                                 3), // changes position of shadow
                                           ),
                                         ],
@@ -379,7 +380,7 @@ class ThumbnailPages extends State<ThumbnailPage> {
                                                     255, 236, 24, 155),
                                           ),
                                           child: Padding(
-                                            padding: EdgeInsets.all(5.0),
+                                            padding: const EdgeInsets.all(5.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
@@ -518,7 +519,7 @@ class ThumbnailPages extends State<ThumbnailPage> {
                                         ),
                                       ),
                                     ),
-                                    SizedBox(height: 10),
+                                    const SizedBox(height: 10),
                                     Container(
                                       width: 300,
                                       height: 200,
@@ -533,7 +534,7 @@ class ThumbnailPages extends State<ThumbnailPage> {
                                             color: Colors.grey.withOpacity(0.5),
                                             spreadRadius: 2,
                                             blurRadius: 7,
-                                            offset: Offset(0,
+                                            offset: const Offset(0,
                                                 3), // changes position of shadow
                                           ),
                                         ],
@@ -579,7 +580,7 @@ class ThumbnailPages extends State<ThumbnailPage> {
                                                     255, 236, 24, 155),
                                           ),
                                           child: Padding(
-                                            padding: EdgeInsets.all(5.0),
+                                            padding: const EdgeInsets.all(5.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
@@ -715,7 +716,7 @@ class ThumbnailPages extends State<ThumbnailPage> {
                                         ),
                                       ),
                                     ),
-                                    SizedBox(height: 10),
+                                    const SizedBox(height: 10),
                                     Container(
                                       width: 300,
                                       height: 200,
@@ -776,7 +777,7 @@ class ThumbnailPages extends State<ThumbnailPage> {
                                                     255, 236, 24, 155),
                                           ),
                                           child: Padding(
-                                            padding: EdgeInsets.all(5.0),
+                                            padding: const EdgeInsets.all(5.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
@@ -915,7 +916,7 @@ class ThumbnailPages extends State<ThumbnailPage> {
                                         ),
                                       ),
                                     ),
-                                    SizedBox(height: 10),
+                                    const SizedBox(height: 10),
                                     Container(
                                       width: 300,
                                       height: 200,
@@ -928,7 +929,7 @@ class ThumbnailPages extends State<ThumbnailPage> {
                                             color: Colors.grey.withOpacity(0.5),
                                             spreadRadius: 2,
                                             blurRadius: 7,
-                                            offset: Offset(0,
+                                            offset: const Offset(0,
                                                 3), // changes position of shadow
                                           ),
                                         ],
@@ -974,7 +975,7 @@ class ThumbnailPages extends State<ThumbnailPage> {
                                                     255, 236, 24, 155),
                                           ),
                                           child: Padding(
-                                            padding: EdgeInsets.all(5.0),
+                                            padding: const EdgeInsets.all(5.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
@@ -1110,7 +1111,7 @@ class ThumbnailPages extends State<ThumbnailPage> {
                                         ),
                                       ),
                                     ),
-                                    SizedBox(height: 10),
+                                    const SizedBox(height: 10),
                                     Container(
                                       width: 300,
                                       height: 200,
@@ -1124,7 +1125,7 @@ class ThumbnailPages extends State<ThumbnailPage> {
                                             color: Colors.grey.withOpacity(0.5),
                                             spreadRadius: 2,
                                             blurRadius: 7,
-                                            offset: Offset(0,
+                                            offset: const Offset(0,
                                                 3), // changes position of shadow
                                           ),
                                         ],
@@ -1171,7 +1172,7 @@ class ThumbnailPages extends State<ThumbnailPage> {
                                                     255, 236, 24, 155),
                                           ),
                                           child: Padding(
-                                            padding: EdgeInsets.all(5.0),
+                                            padding: const EdgeInsets.all(5.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
@@ -1311,7 +1312,7 @@ class ThumbnailPages extends State<ThumbnailPage> {
                                         ),
                                       ),
                                     ),
-                                    SizedBox(height: 10),
+                                    const SizedBox(height: 10),
                                     Container(
                                       width: 300,
                                       height: 200,
@@ -1326,7 +1327,7 @@ class ThumbnailPages extends State<ThumbnailPage> {
                                             color: Colors.grey.withOpacity(0.5),
                                             spreadRadius: 2,
                                             blurRadius: 7,
-                                            offset: Offset(0,
+                                            offset: const Offset(0,
                                                 3), // changes position of shadow
                                           ),
                                         ],
@@ -1372,7 +1373,7 @@ class ThumbnailPages extends State<ThumbnailPage> {
                                                     255, 236, 24, 155),
                                           ),
                                           child: Padding(
-                                            padding: EdgeInsets.all(5.0),
+                                            padding: const EdgeInsets.all(5.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
@@ -1508,7 +1509,7 @@ class ThumbnailPages extends State<ThumbnailPage> {
                                         ),
                                       ),
                                     ),
-                                    SizedBox(height: 10),
+                                    const SizedBox(height: 10),
                                     Container(
                                       width: 300,
                                       height: 200,
@@ -1523,7 +1524,7 @@ class ThumbnailPages extends State<ThumbnailPage> {
                                             color: Colors.grey.withOpacity(0.5),
                                             spreadRadius: 2,
                                             blurRadius: 7,
-                                            offset: Offset(0,
+                                            offset: const Offset(0,
                                                 3), // changes position of shadow
                                           ),
                                         ],
@@ -1569,7 +1570,7 @@ class ThumbnailPages extends State<ThumbnailPage> {
                                                     255, 236, 24, 155),
                                           ),
                                           child: Padding(
-                                            padding: EdgeInsets.all(5.0),
+                                            padding: const EdgeInsets.all(5.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
@@ -1708,7 +1709,7 @@ class ThumbnailPages extends State<ThumbnailPage> {
                                         ),
                                       ),
                                     ),
-                                    SizedBox(height: 10),
+                                    const SizedBox(height: 10),
                                     Container(
                                       width: 300,
                                       height: 200,
@@ -1723,7 +1724,7 @@ class ThumbnailPages extends State<ThumbnailPage> {
                                             color: Colors.grey.withOpacity(0.5),
                                             spreadRadius: 2,
                                             blurRadius: 7,
-                                            offset: Offset(0,
+                                            offset: const Offset(0,
                                                 3), // changes position of shadow
                                           ),
                                         ],
@@ -1769,7 +1770,7 @@ class ThumbnailPages extends State<ThumbnailPage> {
                                                     255, 236, 24, 155),
                                           ),
                                           child: Padding(
-                                            padding: EdgeInsets.all(5.0),
+                                            padding: const EdgeInsets.all(5.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
@@ -1905,7 +1906,7 @@ class ThumbnailPages extends State<ThumbnailPage> {
                                         ),
                                       ),
                                     ),
-                                    SizedBox(height: 10),
+                                    const SizedBox(height: 10),
                                     Container(
                                       width: 300,
                                       height: 200,
@@ -1919,7 +1920,7 @@ class ThumbnailPages extends State<ThumbnailPage> {
                                             color: Colors.grey.withOpacity(0.5),
                                             spreadRadius: 2,
                                             blurRadius: 7,
-                                            offset: Offset(0,
+                                            offset: const Offset(0,
                                                 3), // changes position of shadow
                                           ),
                                         ],
@@ -1965,7 +1966,7 @@ class ThumbnailPages extends State<ThumbnailPage> {
                                                     255, 236, 24, 155),
                                           ),
                                           child: Padding(
-                                            padding: EdgeInsets.all(5.0),
+                                            padding: const EdgeInsets.all(5.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
@@ -2018,7 +2019,7 @@ class ThumbnailPages extends State<ThumbnailPage> {
                                     // Close icon
                                   ],
                                 ),
-                                actions: [], // Leave this empty to hide the default action buttons
+                                actions: const [], // Leave this empty to hide the default action buttons
                               );
                             },
                           );

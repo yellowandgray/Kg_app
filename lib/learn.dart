@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kg_app/main.dart';
 import 'package:kg_app/thumbnail.dart';
 
 class ListPage extends StatelessWidget {
@@ -30,6 +31,18 @@ class ListPage extends StatelessWidget {
             },
           ),
         ],
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const MyApp(),
+              ),
+            );
+            // Navigator.pop(context); // This will navigate back
+          },
+        ),
       ),
       body: Container(
         decoration: const BoxDecoration(
@@ -51,7 +64,7 @@ class ListPage extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) {
                       // Replace 'YourNewScreen()' with the widget for your new screen
-                      return ThumbnailPage();
+                      return const ThumbnailPage();
                     },
                   ),
                 );
