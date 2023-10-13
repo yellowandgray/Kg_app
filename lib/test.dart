@@ -15,21 +15,47 @@ class Testpage extends StatefulWidget {
 class _TestpageState extends State<Testpage> {
   FlutterTts flutterTts = FlutterTts();
 
+  // Future<void> setTtsConfiguration() async {
+  //   // Get available voices
+  //   List<dynamic> voices = await flutterTts.getVoices;
+
+  //   // Choose a specific voice based on its name or language
+  //   String selectedVoice =
+  //       "Your Desired Voice Name"; // Set the desired voice name
+
+  //   // Set the voice
+  //   await flutterTts
+  //       .setVoice(voices.firstWhere((voice) => voice['name'] == selectedVoice));
+
+  //   // Set other TTS parameters (optional)
+  //   await flutterTts.setPitch(6.0); // Set pitch (1.0 is the default)
+  //   await flutterTts.setSpeechRate(6.0); // Set speech rate (1.0 is the default)
+  // }
+
   Future<void> setTtsConfiguration() async {
     // Get available voices
     List<dynamic> voices = await flutterTts.getVoices;
 
-    // Choose a specific voice based on its name or language
-    String selectedVoice =
-        "Your Desired Voice Name"; // Set the desired voice name
+    // Determine the best voice based on your criteria
+    String selectedVoice;
+    for (var voice in voices) {
+      // Customize your criteria here, for example, choosing a female Indian voice
+      if (voice['language'] == 'en-IN' && voice['gender'] == 'female') {
+        selectedVoice = voice['name'];
+        break; // Found a suitable voice, exit the loop
+      }
+    }
+
+    selectedVoice = voices.first['name'];
 
     // Set the voice
     await flutterTts
         .setVoice(voices.firstWhere((voice) => voice['name'] == selectedVoice));
 
     // Set other TTS parameters (optional)
-    await flutterTts.setPitch(1.0); // Set pitch (1.0 is the default)
-    await flutterTts.setSpeechRate(1.0); // Set speech rate (1.0 is the default)
+    await flutterTts.setPitch(0.5); // Set pitch (1.0 is the default)
+    await flutterTts
+        .setSpeechRate(10.1); // Set speech rate (1.0 is the default)
   }
 
   final List<String> photoPaths = [

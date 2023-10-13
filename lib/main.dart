@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:kg_app/audio.dart';
 import 'package:kg_app/learn.dart';
 import 'package:kg_app/test.dart';
 
