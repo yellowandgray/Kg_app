@@ -92,7 +92,10 @@ class ThumbnailPages extends State<ThumbnailPage> {
   Future<void> _speak(String text) async {
     try {
       await flutterTts.setLanguage("en-IN");
-
+      await flutterTts.setVoice({
+        "name": "en-IN-Neural2-A",
+        "locale": "en-IN",
+      });
       await flutterTts.setSpeechRate(0.4);
 
       if (isPlaying) {
