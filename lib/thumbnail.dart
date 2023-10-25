@@ -140,87 +140,90 @@ class ThumbnailPages extends State<ThumbnailPage> {
           ),
         ],
       ),
-      body: Stack(
-        children: [
-          Image.asset(
-            'img/bg_image.jpg', // Replace with the path to your background image
-            width: double.infinity,
-            height: double.infinity,
-            fit: BoxFit.fill,
-          ),
-          Padding(
-            padding: EdgeInsets.all(16),
-            child: SingleChildScrollView(
-              child: Align(
-                alignment: Alignment.topCenter,
-                child: Wrap(
-                  spacing: 30.0, // Spacing between items
-                  runSpacing: 8.0, // Spacing between rows
-                  children: List.generate(
-                    fruits.length,
-                    (index) {
-                      return GestureDetector(
-                        onTap: () {
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return _buildDialogContent(
-                                context,
-                                fruits[index].title,
-                                fruits[index].description,
-                                fruits[index].imagePath,
-                                _stop,
-                              );
-                            },
-                          );
-                        },
-                        child: Column(
-                          children: [
-                            Container(
-                              width: 140,
-                              height: 140,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                  color: const Color(0xFF048664),
-                                  width: 4.0,
-                                ),
-                                image: DecorationImage(
-                                  image: AssetImage(fruits[index].imagePath),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 8.0),
-                            // Spacing between image and text
-                            Container(
-                              decoration: BoxDecoration(
-                                color: const Color(
-                                    0xFF048664), // Set the background color
-                                borderRadius: BorderRadius.circular(
-                                    8.0), // Set border radius as needed
-                              ),
-                              padding: const EdgeInsets.all(
-                                  8.0), // Add padding to the text
-                              child: Text(
-                                fruits[index].name,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18,
+      body: Container(
+        color: Colors.white,
+        child: Stack(
+          children: [
+            // Image.asset(
+            //   'img/bg_image.jpg', // Replace with the path to your background image
+            //   width: double.infinity,
+            //   height: double.infinity,
+            //   fit: BoxFit.fill,
+            // ),
+
+            Padding(
+              padding: EdgeInsets.all(16),
+              child: SingleChildScrollView(
+                child: Align(
+                  alignment: Alignment.topCenter,
+                  child: Wrap(
+                    spacing: 30.0, // Spacing between items
+                    runSpacing: 8.0, // Spacing between rows
+                    children: List.generate(
+                      fruits.length,
+                      (index) {
+                        return GestureDetector(
+                          onTap: () {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return _buildDialogContent(
+                                  context,
+                                  fruits[index].title,
+                                  fruits[index].description,
+                                  fruits[index].imagePath,
+                                  _stop,
+                                );
+                              },
+                            );
+                          },
+                          child: Column(
+                            children: [
+                              Container(
+                                width: 130,
+                                height: 140,
+                                decoration: BoxDecoration(
+                                  // border: Border.all(
+                                  //   color: const Color(0xFF048664),
+                                  //   width: 4.0,
+                                  // ),
+                                  image: DecorationImage(
+                                    image: AssetImage(fruits[index].imagePath),
+                                    // fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
+                              SizedBox(height: 3.0),
+                              // Spacing between image and text
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: const Color(
+                                      0xFF048664), // Set the background color
+                                  borderRadius: BorderRadius.circular(
+                                      8.0), // Set border radius as needed
+                                ),
+                                padding: const EdgeInsets.all(
+                                    8.0), // Add padding to the text
+                                child: Text(
+                                  fruits[index].name,
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -268,13 +271,13 @@ class ThumbnailPages extends State<ThumbnailPage> {
               ),
               const SizedBox(height: 10),
               Container(
-                height: 200,
+                height: 225,
                 width: 300,
                 // margin: EdgeInsets.symmetric(horizontal: 5.0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
                   image: DecorationImage(
-                    fit: BoxFit.cover,
+                    fit: BoxFit.fill,
                     image: AssetImage(imagePath),
                   ),
                   boxShadow: [
@@ -287,7 +290,7 @@ class ThumbnailPages extends State<ThumbnailPage> {
                   ],
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 15),
               Text(
                 title,
                 style: const TextStyle(
@@ -295,23 +298,23 @@ class ThumbnailPages extends State<ThumbnailPage> {
                   fontSize: 18,
                 ),
               ),
-              const SizedBox(height: 8),
-              Text(
-                description,
-                textAlign: TextAlign.justify,
-                style: const TextStyle(fontSize: 16, height: 1.3),
-              ),
-              const SizedBox(height: 16),
+              // const SizedBox(height: 8),
+              // Text(
+              //   description,
+              //   textAlign: TextAlign.justify,
+              //   style: const TextStyle(fontSize: 16, height: 1.3),
+              // ),
+              const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   ElevatedButton(
                     onPressed: () {
                       // Handle the action for the Listen button
-                      _speak('$title   $description');
+                      _speak('$title  ');
                     },
                     child: Padding(
-                      padding: const EdgeInsets.all(5.0),
+                      padding: const EdgeInsets.all(2.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -338,7 +341,7 @@ class ThumbnailPages extends State<ThumbnailPage> {
                       );
                     },
                     child: const Padding(
-                      padding: EdgeInsets.all(5.0),
+                      padding: EdgeInsets.all(2.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -415,13 +418,13 @@ class ThumbnailPages extends State<ThumbnailPage> {
                       ),
                       const SizedBox(height: 10),
                       Container(
-                        height: 200,
-                        width: 300,
+                        height: 210,
+                        width: 305,
                         margin: EdgeInsets.symmetric(horizontal: 1.0),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8.0),
                           image: DecorationImage(
-                            fit: BoxFit.cover,
+                            fit: BoxFit.fill,
                             image: AssetImage(fruit.imagePath),
                           ),
                           boxShadow: [
@@ -435,9 +438,10 @@ class ThumbnailPages extends State<ThumbnailPage> {
                           ],
                         ),
                       ),
+
                       const SizedBox(
                           height:
-                              13), // Adjust the spacing between image and text
+                              10), // Adjust the spacing between image and text
                       Text(
                         fruit.title,
                         style: const TextStyle(
@@ -448,8 +452,12 @@ class ThumbnailPages extends State<ThumbnailPage> {
                       const SizedBox(height: 10),
                       Text(
                         fruit.description,
-                        style: const TextStyle(fontSize: 16, height: 1.3),
+                        style: const TextStyle(
+                          fontSize: 16,
+                          height: 1.3,
+                        ),
                         textAlign: TextAlign.justify,
+                        maxLines: null,
                       ),
                     ],
                   ),
@@ -463,7 +471,7 @@ class ThumbnailPages extends State<ThumbnailPage> {
             enlargeCenterPage: true,
             aspectRatio: 16 / 9,
             viewportFraction: 0.9,
-            height: 440,
+            height: 460,
           ),
         ),
       ),

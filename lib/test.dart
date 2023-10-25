@@ -95,92 +95,117 @@ class _TestpageState extends State<Testpage> {
             fit: BoxFit.fill,
           ),
         ),
-        child: Align(
-          alignment: Alignment.center,
-          child: Padding(
-            padding: const EdgeInsets.only(top: 150.0, left: 20.0, right: 20.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Center(
-                  child: Material(
-                    elevation:
-                        5, // Set the elevation value to control the shadow effect
-                    borderRadius: BorderRadius.circular(
-                        8), // Optional: Set border radius for rounded corners
-                    child: Container(
-                      padding:
-                          const EdgeInsets.all(20), // Add padding if needed
-                      decoration: BoxDecoration(
-                        color: Colors.white, // Set background color to white
-                        border: Border.all(
-                          color: Colors.black, // Set border color to black
-                          width: 1, // Set border width
-                        ),
-                        borderRadius: BorderRadius.circular(
-                            8), // Optional: Set border radius for rounded corners
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 7,
-                            offset: const Offset(
-                                0, 3), // changes position of shadow
-                          ),
-                        ],
-                      ),
-                      child: const Text(
-                        '1. Choose the correct picture for apple from the pictures below:', // Add a title
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
-                  ),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            return SingleChildScrollView(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  minHeight: constraints.maxHeight,
                 ),
-
-                // Display photos in a column
-                Padding(
-                  padding: const EdgeInsets.only(
-                      left: 20.0,
-                      top: 40.0), // Adjust the left padding as needed
-                  child: Wrap(
-                    alignment: WrapAlignment.center, // Center the images
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: MediaQuery.of(context).size.width *
+                        0.1, // Set horizontal padding as 10% of screen width
+                    vertical: MediaQuery.of(context).size.height *
+                        0.18, // Set vertical padding as 10% of screen height
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      for (var i = 0; i < photoPaths.length; i++)
-                        if (i < photoPaths.length)
-                          GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                selectedFruit = photoPaths[i];
-                                _showGifDialog(); // Show the GIF immediately
-                              });
-                            },
-                            child: Container(
-                              margin: const EdgeInsets.all(20.0),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(60.0),
-                                color: selectedFruit == photoPaths[i]
-                                    ? Colors.green // Highlight selected fruit
-                                    : Colors.white,
+                      Center(
+                        child: Material(
+                          elevation:
+                              5, // Set the elevation value to control the shadow effect
+                          borderRadius: BorderRadius.circular(
+                              8), // Optional: Set border radius for rounded corners
+                          child: Container(
+                            padding: const EdgeInsets.all(
+                                15), // Add padding if needed
+                            decoration: BoxDecoration(
+                              color:
+                                  Colors.white, // Set background color to white
+                              border: Border.all(
+                                color:
+                                    Colors.black, // Set border color to black
+                                width: 1, // Set border width
                               ),
-                              padding: const EdgeInsets.all(8.0),
-                              child: ClipOval(
-                                child: Image.asset(
-                                  photoPaths[i],
-                                  width: 110,
-                                  height: 110,
+                              borderRadius: BorderRadius.circular(
+                                  8), // Optional: Set border radius for rounded corners
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 2,
+                                  blurRadius: 7,
+                                  offset: const Offset(
+                                      0, 3), // changes position of shadow
                                 ),
+                              ],
+                            ),
+                            child: const Text(
+                              '1. Choose the correct picture for apple from the pictures below:', // Add a title
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.black,
                               ),
                             ),
                           ),
+                        ),
+                      ),
+
+                      // Display photos in a column
+                      // Padding(
+                      //   padding: const EdgeInsets.only(
+                      //       left: 20.0,
+                      //       top: 40.0), // Adjust the left padding as needed
+                      //   child:
+                      Wrap(
+                        spacing: 20.0,
+                        alignment: WrapAlignment.center, // Center the images
+                        children: [
+                          for (var i = 0; i < photoPaths.length; i++)
+                            if (i < photoPaths.length)
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    selectedFruit = photoPaths[i];
+                                    _showGifDialog(); // Show the GIF immediately
+                                  });
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(
+                                    top: MediaQuery.of(context).size.height *
+                                        0.05, // 10% of screen height
+                                    left: MediaQuery.of(context).size.width *
+                                        0.02, // 2% of screen width
+                                    right: MediaQuery.of(context).size.width *
+                                        0.02, // 2% of screen width
+                                  ),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(60.0),
+                                    color: selectedFruit == photoPaths[i]
+                                        ? Colors
+                                            .green // Highlight selected fruit
+                                        : Colors.white,
+                                  ),
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: ClipOval(
+                                    child: Image.asset(
+                                      photoPaths[i],
+                                      width: 110,
+                                      height: 110,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                        ],
+                      ),
+                      //)
                     ],
                   ),
-                )
-              ],
-            ),
-          ),
+                ),
+              ),
+            );
+          },
         ),
       ),
     );
